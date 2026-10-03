@@ -46,7 +46,6 @@ I also used AI to help me understand how some of the tests worked.
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
-
   Basically in a Streamlit app, when you intereact with anything the entire screen updates, so it runs the Python script again from top to bottom, called a rerun. So Anytime the user interacts with anything, it reruns the script.
 
   Session state is a dictionary that doesnt change across reruns for a user's session. So it would be used for remembering the secret number the entire user's session.
@@ -56,8 +55,16 @@ I also used AI to help me understand how some of the tests worked.
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  
+
+  Make sure to read and understand what the AI is suggesting to change or take away
+  Use source control to check the differences in the code
+  Before asking AI to fix things, ask why the bug is happening. Basically try to understand the reasoning behind why something is wrong, instead of just blindly using AI to fix it for you.
+
 - What is one thing you would do differently next time you work with AI on a coding task?
 
+  I would do a bit of research or ask AI to explain streamlit to me because I have never used it before and it had some constraints that I didn't quite understand.
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
-  
+
+  I used to think it was kind of something you blindly use and not have to think about as much
+  But I realized its important to understand what the AI is doing and even ask questions, especially if later you have to update the code or fix bugs caused by AI.
