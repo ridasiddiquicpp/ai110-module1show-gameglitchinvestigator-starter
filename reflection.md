@@ -8,32 +8,37 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
 
+The hints were not accurate for the secret number. And the enter button didnt do anything. The new game button doesn't start a new game
 **Bug Reproduction Log**
 
 Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| guess of 10 | "Go higher" | "Go Lower"      | app.py, check_guess |
+| pressed "Enter" button | Decrease attempts| Did nothing | app.py, lines 147-188 |
+| pressed "New game" | Start a new game | Did nothing | app.py, lines 140-145 |
 
 ---
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion you did not accept as written (including what the AI suggested, why you rejected or changed it, and how you verified your version). It does not have to be a suggestion that was wrong: over-engineered, out of scope, harder to read, or a poor fit for this codebase all count.
+I used Claude. 
+When I was asking it to help me fix the bug for too low/too high hints. It also gave me advice to fix comparisons between an int and string, which was causing some of the errors. I looked into the lines that the AI gave me and noticed this bug. So I decided to take the advice, which added a simple check to make sure comparison is between ints only.
+
+When I was asking why pressing "New Game" is not actually starting a New Game it found the bug and presented it. It also gave some other issues, like how the code was regenerating the secret with hardcoded random.randint(1, 100) instead of using the difficulty-based low, high range. At this point I was focused on just getting the New Game to work and didn't want to deal with any other unrelated changes that might make me confused so I disregarded this issue, opting to fix the main one and then look into this later.
+
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
+I added a number of tests, especially testing if the hints given were correct, in the test_game_logic.py. 
+They were successful.
+And I manually ran the game and played it to make sure the bugs like "New game" button were working and the hints were correct.
+
+I also used AI to help me understand how some of the tests worked.
+
 
 ---
 
@@ -41,11 +46,18 @@ Document at least 3 bugs you found. Add rows as needed.
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+
+  Basically in a Streamlit app, when you intereact with anything the entire screen updates, so it runs the Python script again from top to bottom, called a rerun. So Anytime the user interacts with anything, it reruns the script.
+
+  Session state is a dictionary that doesnt change across reruns for a user's session. So it would be used for remembering the secret number the entire user's session.
+
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
+  
 - What is one thing you would do differently next time you work with AI on a coding task?
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+  
